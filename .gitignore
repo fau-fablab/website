@@ -1,0 +1,8 @@
+*.pyc
+*__pycache__*
+
+venv
+
+project.db
+
+fablab_website/media

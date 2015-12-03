@@ -1,0 +1,14 @@
+## from gitignore:
+
+*.pyc
+*__pycache__*
+
+venv
+
+#project.db
+
+## additional files:
+Dockerfile
+manage-docker.sh
+
+.git
