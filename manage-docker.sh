@@ -80,10 +80,10 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 else
 	# someone is sourcing this file -> tab completion
-	if $(complete -p "./$(basename ${BASH_SOURCE})" 2>/dev/null) ; then complete -r "./$(basename ${BASH_SOURCE})"; fi
+	if $(complete -p "$(basename ${BASH_SOURCE})" 2>/dev/null) ; then complete -r "$(basename ${BASH_SOURCE})"; fi
 	complete -W "$(echo ${FUNCTIONS[@]})" "$(basename ${BASH_SOURCE})"
 	unset FUNCTIONS
-	echo "[i] successfully sourced this file - happy tabbing"
+	echo "[i] successfully added tab completion for $(basename ${BASH_SOURCE}) - happy tabbing"
 fi
 
 # vim: ts=8 noet

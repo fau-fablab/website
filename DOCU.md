@@ -1,10 +1,10 @@
-DOCUMENTATION
+Documentation
 =============
 
 1. Scripts and Testing
 ----------------------
 
- - source the scripts to get tab completion: `. ./manage-docker.sh && . ./setup.sh`
+ - source [`tabcompletion.sh`](./tabcompletion.sh) to get tab completion: `. ./tabcompletion.sh`
 
 ### Docker
 
@@ -34,7 +34,7 @@ DOCUMENTATION
  - Only for documentation: How to set up a new djangocms project
  - I ran the setup script until it crashed, entered the matrix - ehm venv and ran:
 
-    pip3 install --upgrade -r requirements.txt
+        pip3 install --upgrade -r requirements.txt
 
  - then I ran `djangocms --config-file djangocmsinstaller.conf -p djangocms fablab_website` and chooosing the default values from [`./djangocmsinstaller.conf`](./djangocmsinstaller.conf)
  - one can now `rm venv && ./setup.sh` to finnish the provisioning or `./manage-docker.sh up`
