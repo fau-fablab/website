@@ -6,9 +6,10 @@
         <title>{% block title %}FAU FabLab{% endblock title %}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="/static/css/fablab-bootstrap-theme.css">
         {% render_block "css" %}
 				{% include 'favicon.html' %}
+				<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     </head>
     <body>
         {% cms_toolbar %}
@@ -21,7 +22,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">FAU FabLab</a>
+                    <a class="navbar-brand" href="#">
+											<img class="img-thumbnail hidden-xs" src="/static/logo/fablab_logo.svg" alt="FAU FabLab"/>
+											<img class="img-thumbnail visible-xs" src="/static/logo/fab_cube.svg" alt="FAU FabLab"/>
+										</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
