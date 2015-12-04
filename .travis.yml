@@ -1,8 +1,23 @@
 sudo: required
 
+language: python
+python:
+    - "3.4"
+    - "3.5"
+    - "3.5-dev"
+    - "nightly"
+
+# test dockerization
 services:
     - docker
 
 before_install:
     - sudo ./manage-docker.sh up
     - sudo docker ps -a
+
+# test website; maybe we want to run unittests here later
+env: "NO_VENV=1"
+
+install: "sudo ./setup.sh"
+
+script: "./djangocms/manage.py runserver"
