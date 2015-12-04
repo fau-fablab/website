@@ -18,7 +18,7 @@ Features
 Documentation
 -------------
 
-see [DOCU.md](DOCU.md)
+see [DOC.md](DOC.md)
 
 Please contribute to build up a nice website ;)
 

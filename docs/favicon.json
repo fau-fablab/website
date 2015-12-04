@@ -1,0 +1,43 @@
+{
+    "favicon_generation": {
+        "api_key": "[TODO: Copy your API key here]",
+        "master_picture": {
+            "type": "inline",
+            "content": "[TODO: Copy the base64-encoded content of the image here]"
+        },
+        "favicon_design": {
+            "ios": {
+                "picture_aspect": "background_and_margin",
+                "background_color": "#ffffff",
+                "margin": "14%"
+            },
+            "desktop_browser": [
+
+            ],
+            "windows": {
+                "picture_aspect": "white_silhouette",
+                "background_color": "#2b5797",
+                "on_conflict": "override"
+            },
+            "android_chrome": {
+                "picture_aspect": "shadow",
+                "theme_color": "#ffffff",
+                "manifest": {
+                    "name": "FAU FabLab",
+                    "display": "browser",
+                    "orientation": "not_set",
+                    "on_conflict": "override"
+                }
+            },
+            "safari_pinned_tab": {
+                "picture_aspect": "silhouette",
+                "theme_color": "#5bbad5"
+            }
+        },
+        "settings": {
+            "compression": 5,
+            "scaling_algorithm": "Mitchell",
+            "error_on_image_too_small": false
+        }
+    }
+}
