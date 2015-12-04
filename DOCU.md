@@ -31,8 +31,10 @@ DOCUMENTATION
 2. Bootstrapping django-cms
 ---------------------------
 
+ - Only for documentation: How to set up a new djangocms project
  - I ran the setup script until it crashed, entered the matrix - ehm venv and ran:
 
     pip3 install --upgrade -r requirements.txt
 
  - then I ran `djangocms --config-file djangocmsinstaller.conf -p djangocms fablab_website` and chooosing the default values from [`./djangocmsinstaller.conf`](./djangocmsinstaller.conf)
+ - one can now `rm venv && ./setup.sh` to finnish the provisioning or `./manage-docker.sh up`

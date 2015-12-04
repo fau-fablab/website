@@ -123,7 +123,9 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 			activate_venv
 			echo "[i] Migrating Database"
-			cd "${SITE}" && python3 "./manage.py" "migrate"
+			cd "${SITE}"
+			python3 "./manage.py" "makemigrations"
+			python3 "./manage.py" "migrate"
 			cd - >/dev/null
 
 		}
