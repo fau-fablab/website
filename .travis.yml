@@ -17,8 +17,10 @@ before_install:
     - sudo apt-get update -qq
 
 # test website; maybe we want to run unittests here later
-env: "NO_VENV=1"
-
-install: "sudo ./setup.sh"
-
-script: "./djangocms/manage.py runserver"
+#env: "NO_VENV=1"
+#
+#install: "sudo ./setup.sh"
+#
+#script: "./djangocms/manage.py runserver"
+script: true
+# TODO run some tests...

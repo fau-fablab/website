@@ -52,6 +52,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 				echo "[i]   I think this is ubuntu"
 
+				apt-get update -qq
 				apt-get -y install ${REQUIREMENTS_UBUNTU[@]} && apt-get clean
 
 			else
