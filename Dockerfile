@@ -12,14 +12,15 @@ RUN	ln -s /usr/bin/python3 /usr/bin/python
 
 # add files and run the setup/provisioning script
 ADD	./setup.sh /srv/setup.sh
-WORKDIR	/srv/
 # this is splitted for easier debugging
 RUN	/srv/setup.sh install_system_requirements
 ADD	./djangocms/requirements.txt /srv/djangocms/requirements.txt
 RUN	/srv/setup.sh install_requirements
 
-CMD	./setup.sh post_setup && \
-	./djangocms/manage.py runserver 0.0.0.0:80 # TODO later we need gunnycorn or something like that
+WORKDIR	/srv/djangocms
+
+CMD	../setup.sh post_setup && \
+	./manage.py runserver 0.0.0.0:80 # TODO later we need gunnycorn or something like that
 EXPOSE	80
 
 # vim: ts=8 noet
