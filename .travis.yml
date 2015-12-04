@@ -14,6 +14,7 @@ services:
 before_install:
     - sudo ./manage-docker.sh up
     - sudo docker ps -a
+    - sudo apt-get update -qq
 
 # test website; maybe we want to run unittests here later
 env: "NO_VENV=1"
