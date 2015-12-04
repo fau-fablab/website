@@ -4,5 +4,5 @@ services:
     - docker
 
 before_install:
-    - ./manage-docker.sh up
-    - docker ps -a
+    - sudo ./manage-docker.sh up
+    - sudo docker ps -a
