@@ -1,0 +1,8 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - ./manage-docker.sh up
+    - docker ps -a
