@@ -21,3 +21,7 @@ html5lib
 Pillow>=2.3
 django-sekizai>=0.7
 six
+
+django-compressor>=1.6
+django-sass-processor>=0.3.0
+libsass>=0.9.3
