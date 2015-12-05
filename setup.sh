@@ -26,9 +26,11 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		VENV_DIR="./venv/"
 		SITE="./djangocms/"
 		# TODO: requirements ausmisten
-		REQUIREMENTS_FEDORA=("wget" "gcc" "redhat-rpm-config" "python3-devel" "python3-setuptools" "libjpeg-turbo" "zlib" "libtiff" "python3-freetype" "lcms2" "libwebp" "tcl" "tk" "openjpeg2" \
-					"libtiff-devel" "libjpeg-turbo-devel" "libzip-devel" "freetype-devel" "lcms2-devel" "libwebp-devel" "tcl-devel" "tk-devel")
-		REQUIREMENTS_UBUNTU=("wget" "gcc" "python3-dev" "python3-setuptools" "libtiff5-dev" "libjpeg8" "zlib1g-dev" "libfreetype6-dev" "liblcms2-dev" "libwebp-dev" "tcl8.6-dev" "tk8.6-dev" "python-tk" "libpq-dev" "postgresql-client-9.3" "python-dev")
+		REQUIREMENTS_FEDORA=("wget" "gcc" "gcc-c++" "redhat-rpm-config" "python3-devel" "python3-setuptools" \
+		    "libjpeg-turbo" "zlib" "libtiff" "python3-freetype" "lcms2" "libwebp" "tcl" "tk" "openjpeg2" \
+		    "libtiff-devel" "libjpeg-turbo-devel" "libzip-devel" "freetype-devel" "lcms2-devel" "libwebp-devel" "tcl-devel" "tk-devel")
+		REQUIREMENTS_UBUNTU=("wget" "gcc" "gcc-c++" "python3-dev" "python3-setuptools" "postgresql-client-9.3" "python-dev" \
+		    "libtiff5-dev" "libjpeg8" "zlib1g-dev" "libfreetype6-dev" "liblcms2-dev" "libwebp-dev" "tcl8.6-dev" "tk8.6-dev" "python-tk" "libpq-dev")
 
 		function activate_venv() {
 		# checks if you are in the virtual environment and enters it if not
