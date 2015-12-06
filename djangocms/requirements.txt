@@ -21,3 +21,10 @@ html5lib
 Pillow>=2.3
 django-sekizai>=0.7
 six
+
+django-compressor>=1.6
+# this one is currently broken: django-sass-processor>=0.3.0
+# but the pr to fix it is already accepted: https://github.com/jrief/django-sass-processor/pull/21
+# here is a fixed version:
+https://github.com/sedrubal/django-sass-processor/archive/0.3.0-python3-hotfix.tar.gz
+libsass>=0.9.3

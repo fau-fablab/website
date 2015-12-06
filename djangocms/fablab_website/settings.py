@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
     'treebeard',
+    'sass_processor',
     'djangocms_text_ckeditor',
     'djangocms_style',
     'djangocms_column',
