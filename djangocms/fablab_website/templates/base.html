@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		{% cms_toolbar %}
-		<nav class="navbar navbar-default" role="navigation">
+		<nav id="top" class="navbar navbar-default" role="navigation">
 			<div class="container container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,7 +21,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="/">
 						<img class="img-thumbnail hidden-xs" src="/static/logo/fablab_logo.svg" alt="FAU FabLab"/>
 						<img class="img-thumbnail visible-xs" src="/static/logo/fab_cube.svg" alt="FAU FabLab"/>
 					</a>
@@ -67,6 +67,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="/static/js/faufablab.js"></script>
 		{% render_block "js" %}
 	</body>
 </html>
