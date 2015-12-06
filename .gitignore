@@ -5,4 +5,4 @@ venv
 
 project.db
 
-fablab_website/media
+djangocms/media/*
