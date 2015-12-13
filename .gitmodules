@@ -1,4 +1,4 @@
-[submodule "website-style"]
-	path = djangocms/fablab_website/static/css/fablab
+[submodule "djangocms/fablab_website/static/fablab_theme"]
+	path = djangocms/fablab_website/static/fablab_theme
 	url = https://github.com/fau-fablab/website-style.git
 	branch = bootstrap

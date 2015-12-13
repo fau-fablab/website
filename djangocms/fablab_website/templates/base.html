@@ -6,7 +6,7 @@
 		<title>{% block title %}FAU FabLab{% endblock title %}</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{% sass_src 'css/fablab/fablab-bootstrap-theme.scss' %}">
+		<link rel="stylesheet" href="{% sass_src 'fablab_theme/css/faufablab.scss' %}">
 		{% render_block "css" %}
 		{% include "favicon.html" %}
 	</head>
@@ -67,7 +67,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
-		<script src="/static/js/faufablab.js"></script>
+		<script src="/static/fablab_theme/js/faufablab.js"></script>
 		{% render_block "js" %}
 	</body>
 </html>
