@@ -191,8 +191,3 @@ DATABASES = {
         'USER': ''
     }
 }
-
-MIGRATION_MODULES = {
-    'djangocms_style': 'djangocms_style.migrations_django',
-    'djangocms_teaser': 'djangocms_teaser.migrations_django'
-}
