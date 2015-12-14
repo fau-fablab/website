@@ -12,7 +12,8 @@
 	</head>
 	<body>
 		{% cms_toolbar %}
-		<nav id="top" class="navbar navbar-default" role="navigation">
+
+		<nav id="top" class="navbar navbar-inverse navbar-static-top navbar-sticky" role="navigation">
 			<div class="container container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -59,8 +60,39 @@
 			</div><!-- /.container-fluid -->
 		</nav>
 
-		<div class="container content">
-			{% block content %}{% endblock content %}
+		<div class="container">
+			<div class="row">
+				<div role="complementary" class="fixed-top col-md-3">
+					<nav class="hidden-print well hidden-xs hidden-sm affix">
+						<ul class="nav">
+							<p>Aktionen</p>
+							<li><a href="#action0">Aktion 0</a></li>
+							<li>
+								<a href="#action1">Aktion 1</a>
+								<ul class="nav">
+									<li><a href="#action2">Aktion 2</a></li>
+									<li><a href="#action3">Aktion 3</a></li>
+								</ul>
+							</li>
+							<p>Seiten</p>
+							{% show_menu 0 1 100 100 "menu.html" %}
+							<li class="text-center">
+									<a class="back-to-top smooth_scroll" href="#top">
+										<span class="glyphicon glyphicon glyphicon-menu-up"></span>
+									</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="col-md-9 content" role="main">
+					{% block content %}{% endblock content %}
+					<div>
+
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		{% include "footer.html" %}
