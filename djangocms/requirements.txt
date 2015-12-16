@@ -1,30 +1,39 @@
-django-cms<3.3
-django-treebeard>=2.0
+Django==1.8.7  # <1.9
+django-cms==3.2.0  # <3.3
 
-https://github.com/divio/djangocms-column/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-flash/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-googlemap/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-inherit/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-link/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-style/archive/1.6.0.zip
-https://github.com/divio/djangocms-file/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-picture/archive/master.zip?1449186585.6424687
-https://github.com/divio/djangocms-teaser/archive/0.2.0.zip
-https://github.com/divio/djangocms-video/archive/master.zip?1449186585.6424687
-djangocms-admin-style>=1.0.6
-djangocms-text-ckeditor>=2.8.0
-Django<1.9
-pytz
-django-reversion>=1.8.7,<1.9
-django-classy-tags>=0.3.4.1
-html5lib
-Pillow>=2.3
-django-sekizai>=0.7
-six
+## djangocms plugins
+djangocms-column==1.6.0
+djangocms-googlemap==0.4.0
+djangocms-inherit==0.1.1
+djangocms-link==1.7.1
+djangocms-file==0.2.0
+djangocms-picture==0.2.0
+djangocms-teaser==0.2.0
+djangocms-video==0.2.0
+djangocms-style==1.6.0
+djangocms-admin-style==1.0.7  # >=1.0.6
+djangocms-text-ckeditor==2.8.0  # >=2.8.0
+django-reversion==1.8.7  # >=1.8.7,<1.9
+django-classy-tags==0.7.0  # >=0.3.4.1
 
-django-compressor>=1.6
+## and their dependencies
+html5lib==0.9999999
+Pillow==3.0.0  # >=2.3
+django-sekizai==0.9.0  # >=0.7
+six==1.10.0
+pytz==2015.7
+django-appconf==1.0.1
+django-formtools==1.0
+Django-Select2==4.3.2
+django-treebeard==3.0  # >=2.0
+
+## django plugins
 # this one is currently broken: django-sass-processor>=0.3.0
 # but the pr to fix it is already accepted: https://github.com/jrief/django-sass-processor/pull/21
 # here is a fixed version:
 https://github.com/sedrubal/django-sass-processor/archive/0.3.0-python3-hotfix.tar.gz
-libsass>=0.9.3
+
+## and their dependencies
+# django-sass-processor
+django-compressor==1.6  # >=1.6
+libsass==0.9.3  # >=0.9.3

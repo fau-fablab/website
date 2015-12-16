@@ -25,12 +25,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 		VENV_DIR="./venv/"
 		SITE="./djangocms/"
-		# TODO: requirements ausmisten
-		REQUIREMENTS_FEDORA=("wget" "gcc" "gcc-c++" "redhat-rpm-config" "python3-devel" "python3-setuptools" \
-		    "libjpeg-turbo" "zlib" "libtiff" "python3-freetype" "lcms2" "libwebp" "tcl" "tk" "openjpeg2" \
-		    "libtiff-devel" "libjpeg-turbo-devel" "libzip-devel" "freetype-devel" "lcms2-devel" "libwebp-devel" "tcl-devel" "tk-devel")
-		REQUIREMENTS_UBUNTU=("wget" "gcc" "gcc-c++" "python3-dev" "python3-setuptools" "postgresql-client-9.3" "python-dev" \
-		    "libtiff5-dev" "libjpeg8" "zlib1g-dev" "libfreetype6-dev" "liblcms2-dev" "libwebp-dev" "tcl8.6-dev" "tk8.6-dev" "python-tk" "libpq-dev")
+		DOCKERFILE="./Dockerfile"
 
 		function activate_venv() {
 		# checks if you are in the virtual environment and enters it if not
@@ -41,6 +36,15 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			fi
 		}
 
+		function get_system_requirements() {
+		# extracts the system packages from the Dockerfile
+			if [ "${1}"=="fedora" ]; then
+				sed ':a;$!{N;ba};s/\\\n//g;s/#//g' "${DOCKERFILE}" | grep "^RUN\sdnf -y install " | sed 's/^RUN\sdnf -y install\s//;s/\sdnf clean all$//;s/&//g'
+			elif [ "${1}"=="ubuntu" ]; then
+				sed ':a;$!{N;ba};s/\\\n//g;s/#//g' "${DOCKERFILE}" | grep "^RUN\sapt-get update &&\sapt-get -y install " | sed 's/^RUN\sapt-get update &&\sapt-get -y install //;s/\sapt-get clean$//;s/&//g'
+			fi
+		}
+
 		function install_system_requirements() {
 		# installs all system requirements
 
@@ -48,14 +52,18 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 				echo "[i]   I think this is fedora"
 
-				dnf -y install ${REQUIREMENTS_FEDORA[@]} && dnf clean all
+				REQ=$(get_system_requirements "fedora")
+
+				dnf -y install $REQ
 
 			elif [ $(which apt-get) ] ; then
 
 				echo "[i]   I think this is ubuntu"
 
+				REQ=$(get_system_requirements "ubuntu")
+
 				apt-get update -qq
-				apt-get -y install ${REQUIREMENTS_UBUNTU[@]} && apt-get clean
+				apt-get -y install $REQ
 
 			else
 				echo "[!]   your distro is not supported!" >&2
@@ -73,9 +81,11 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 				echo "[i]   I think this is fedora"
 
-				for pkg in ${REQUIREMENTS_FEDORA[@]}; do
+				REQ=($(get_system_requirements "fedora"))
+
+				for pkg in ${REQ[@]}; do
 					if ! $(rpm -q "${pkg}" >/dev/null) ; then
-						echo "[!]   $(rpm -q ${pkg})" >&2
+						echo "[!]   '${pkg}' is not installed" >&2
 						exit 1
 					fi
 				done
@@ -84,9 +94,11 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 				echo "[i]   I think this is ubuntu"
 
-				for pkg in ${REQUIREMENTS_UBUNTU[@]}; do
+				REQ=($(get_system_requirements "ubuntu"))
+
+				for pkg in ${REQ[@]}; do
 					if ! $(dpkg -q "${pkg}" >/dev/null) ; then
-						echo "[!]   $(dpkg -q ${pkg})" >&2	  # TODO test this
+						echo "[!]   '${pkg}' is not installed" >&2
 						exit 1
 					fi
 				done
