@@ -36,4 +36,7 @@ https://github.com/sedrubal/django-sass-processor/archive/0.3.0-python3-hotfix.t
 ## and their dependencies
 # django-sass-processor
 django-compressor==1.6  # >=1.6
-libsass==0.9.3  # >=0.9.3
+libsass==0.10.0  # >=0.9.3
+
+## other utilities
+piprot  # for checking if everything is up to date

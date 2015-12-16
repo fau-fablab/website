@@ -32,8 +32,8 @@ So clone recursive or run `git submodules init && git submodules update`
  - when the environment variable `NO_VENV` is set (e.g. `export NO_VENV=1`) no virtual environment will be set (e.g. in docker `CMD` when running `post_setup`) up otherwise a venv will be created into `./venv`
    - enter this venv by `. ./venv/bin/activate`
 
- - to run the developement server and for testing django site (outside of docker) run `./setup.sh post_setup`:
-   - this will migrate the database (`manage.py migrate`, currently `sqlite3`)
+ - to run the development server and for testing django site (outside of docker) run `./setup.sh post_setup`:
+   - this will migrate the database (`manage.py migrate`, currently `sqlite3`) and compile the `scss` (sass)
    - TODO: set up development and production config in django config and switching via a env var)
    - inside the venv run `./djangocms/manage.py runserver` and go to [http://localhost:8000](http://localhost:8000)
 
@@ -45,5 +45,5 @@ So clone recursive or run `git submodules init && git submodules update`
 
         pip3 install --upgrade -r docs/requirements.txt
 
- - then I ran `djangocms --config-file docs/djangocmsinstaller.conf -p djangocms fablab_website` and chooosing the default values from [`./docs/djangocmsinstaller.conf`](./docs/djangocmsinstaller.conf)
- - one can now `rm venv && ./setup.sh` to finnish the provisioning or `./manage-docker.sh up`
+ - then I ran `djangocms --config-file docs/djangocmsinstaller.conf -p djangocms fablab_website` and choosing the default values from [`./docs/djangocmsinstaller.conf`](./docs/djangocmsinstaller.conf)
+ - one can now `rm -rf venv && ./setup.sh` to finish the provisioning or `./manage-docker.sh up`

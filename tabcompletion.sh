@@ -1,3 +1,11 @@
+if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
+	echo "[!] Please source this script and do not execute it" >&2
+	echo "[!]   source ${0}" >&2
+	echo "[!]  or" >&2
+	echo "[!]   . ${0}" >&2
+	exit 1
+fi
+
 #################
 # For manage.py #
 #################

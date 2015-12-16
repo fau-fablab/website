@@ -137,10 +137,15 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		# tasks to do after setup
 
 			activate_venv
-			echo "[i] Migrating Database"
+			echo "[i] Running post setup tasks"
 			cd "${SITE}"
+			echo "[i]   Compiling scss..."
+			python3 "./manage.py" "compilescss"
+			echo "[i]   Migrating database..."
 			python3 "./manage.py" "makemigrations"
 			python3 "./manage.py" "migrate"
+			echo "[i]   Checking for updates..."
+			piprot -o >&2
 			cd - >/dev/null
 
 		}
