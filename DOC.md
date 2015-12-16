@@ -25,11 +25,11 @@ So clone recursive or run `git submodules init && git submodules update`
 
 ### Setup / Provisioning (with and without docker)
 
- - docker will use **[./setup.sh](setup.sh)** to set up the container
- - but you can do this on your computer, too
- - every step / task is one function / argument and `all` will run the required steps in the right order
- - when running the script as root (e.g. in docker), the required system packages will be installed (fedora (dnf) and ubuntu(/debian?) (apt) are supported)
- - when the environment variable `NO_VENV` is set (e.g. `export NO_VENV=1`) no virtual environment will be set (e.g. in docker) up otherwise a venv will be created into `./venv`
+ - use **[./setup.sh](setup.sh)** to set up the homepage on your computer
+ - it will do the required steps like docker, but without mess up your computer TM
+ - every step / task is one argument / function and `all` will run the required steps in the right order
+ - when running the script as root, the required system packages will be installed automatically (fedora (dnf) and ubuntu(/debian?) (apt) are supported)
+ - when the environment variable `NO_VENV` is set (e.g. `export NO_VENV=1`) no virtual environment will be set (e.g. in docker `CMD` when running `post_setup`) up otherwise a venv will be created into `./venv`
    - enter this venv by `. ./venv/bin/activate`
 
  - to run the developement server and for testing django site (outside of docker) run `./setup.sh post_setup`:
