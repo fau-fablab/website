@@ -11,16 +11,10 @@ python:
 services:
     - docker
 
-before_install:
+script:
     - sudo ./manage-docker.sh up
+    - sleep 2
     - sudo docker ps -a
-    - sudo apt-get update -qq
-
+    - diff -q <(sudo ./manage-docker.sh port) <(echo "80/tcp -> 0.0.0.0:80") >/dev/null  # test if container runs
 # test website; maybe we want to run unittests here later
-#env: "NO_VENV=1"
-#
-#install: "sudo ./setup.sh"
-#
-#script: "./djangocms/manage.py runserver"
-script: true
 # TODO run some tests...

@@ -145,7 +145,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			python3 "./manage.py" "makemigrations"
 			python3 "./manage.py" "migrate"
 			echo "[i]   Checking for updates..."
-			piprot -o >&2
+			[ `piprot -o >&2` ] || true
 			cd - >/dev/null
 
 		}
