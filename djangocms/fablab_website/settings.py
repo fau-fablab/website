@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 import os
-gettext = lambda s: s
+from django.utils.translation import ugettext_lazy as _
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,6 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y7%=$+n&s-1b%u#8l)#@zy$f3zl^_!l9d8c9#@0yhh6g0*9fb9'
+# TODO: replace this for production
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -141,8 +142,8 @@ INSTALLED_APPS = (
 
 LANGUAGES = (
     # Customize this
-    ('de', gettext('de')),
-    ('en', gettext('en')),
+    ('de', _('German')),
+    ('en', _('English')),
 )
 
 CMS_LANGUAGES = {
@@ -150,14 +151,14 @@ CMS_LANGUAGES = {
     1: [
         {
             'code': 'de',
-            'name': gettext('de'),
+            'name': _('German'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,
         },
         {
             'code': 'en',
-            'name': gettext('en'),
+            'name': _('English'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,
