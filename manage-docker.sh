@@ -25,27 +25,30 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 		cd "$(dirname ${0})"  # allow calling this script from outside the scriptdir
 
-		if [ $(whoami) != "root" ]; then echo "[!] this script has to be executed as root!" && exit 1; fi
-
 		IMAGE="fablab_djangocms:3.2.0"
 		CONTAINER="fablab_website"
 		VOL_LOC="${PWD}/djangocms/"
 		VOL_DOC="/srv/djangocms/"
 		SHELL="bash"
 		PORT="80:80"
+		if [ $(whoami) == "root" ]; then
+		    DOCKERCMD="docker"
+		else
+		    DOCKERCMD="sudo docker"
+		fi
 
 		function port() {
-			docker port "${CONTAINER}"
+			${DOCKERCMD} port "${CONTAINER}"
 		}
 		function build() {
-			docker build -t "${IMAGE}" .
+			${DOCKERCMD} build -t "${IMAGE}" .
 		}
 		function run() {
-			docker run -d -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
+			${DOCKERCMD} run -d -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
 				--name="${CONTAINER}" "${IMAGE}"
 		}
 		function run-shell() {
-			docker run --rm -it -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
+			${DOCKERCMD} run --rm -it -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
 				--name="${CONTAINER}-interactive" "${IMAGE}" "${SHELL}"
 		}
 		function up() {
@@ -53,25 +56,25 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			run
 		}
 		function start() {
-			docker start "${CONTAINER}"
+			${DOCKERCMD} start "${CONTAINER}"
 		}
 		function stop() {
-			docker stop "${CONTAINER}"
+			${DOCKERCMD} stop "${CONTAINER}"
 		}
 		function restart() {
-			docker restart "${CONTAINER}"
+			${DOCKERCMD} restart "${CONTAINER}"
 		}
 		function clean() {
 			read -p "Do you really want to delete the container including ALL data? [y/N] "
 			if [ "$REPLY" == "y" ]; then
-				docker rm -v "${CONTAINER}"
+				${DOCKERCMD} rm -v "${CONTAINER}"
 			fi
 		}
 		function shell() {
-			docker exec -it "${CONTAINER}" "${SHELL}"
+			${DOCKERCMD} exec -it "${CONTAINER}" "${SHELL}"
 		}
 		function logs() {
-			docker logs -f "${CONTAINER}"
+			${DOCKERCMD} logs -f "${CONTAINER}"
 		}
 
 		$1  # run the command

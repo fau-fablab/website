@@ -19,7 +19,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		exit 0
 	else
 
-		set -e # exit on error
+		set -e  # exit on error
 
 		cd "$(dirname ${0})"
 
