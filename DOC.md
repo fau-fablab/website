@@ -72,3 +72,9 @@ deavtivate
 # test test
 # commit
 ```
+
+4. Blog
+-------
+
+ - we use [djangocms-blog](https://github.com/nephila/djangocms-blog) as blogging app
+ - it is integrated in djangocms
