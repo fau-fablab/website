@@ -44,11 +44,11 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			${DOCKERCMD} build -t "${IMAGE}" .
 		}
 		function run() {
-			${DOCKERCMD} run -d -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
+			${DOCKERCMD} run -d -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/:Z" \
 				--name="${CONTAINER}" "${IMAGE}"
 		}
 		function run-shell() {
-			${DOCKERCMD} run --rm -it -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/" \
+			${DOCKERCMD} run --rm -it -p "${PORT}" --volume="${VOL_LOC}/:${VOL_DOC}/:Z" \
 				--name="${CONTAINER}-interactive" "${IMAGE}" "${SHELL}"
 		}
 		function up() {
