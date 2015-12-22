@@ -24,8 +24,8 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="/">
-						<img class="img-thumbnail hidden-xs" src="/static/logo/fablab_logo.svg" alt="FAU FabLab"/>
-						<img class="img-thumbnail visible-xs" src="/static/logo/fab_cube.svg" alt="FAU FabLab"/>
+						<img class="img-thumbnail hidden-xs" src="{% static 'logo/fablab_logo.svg' %}" alt="FAU FabLab"/>
+						<img class="img-thumbnail visible-xs" src="{% static 'logo/fab_cube.svg' %}" alt="FAU FabLab"/>
 					</a>
 				</div><!-- /.navbar-header -->
 				<div class="navbar-collapse collapse">
@@ -34,7 +34,7 @@
 						<!-- user icon collapsed menu -->
 						<li class="visible-xs dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								<img class="img-circle img-thumbnail" src="/static/logo/fab_cube_gray.svg" alt=""/>
+								<img class="img-circle img-thumbnail" src="{% static 'logo/fab_cube_gray.svg' %}" alt=""/>
 								<span>Username</span>
 								<span class="caret"></span>
 							</a>
@@ -48,7 +48,7 @@
 					<ul class="fade-down hidden-xs nav navbar-nav navbar-right">
 						<p class="navbar-text fade-down-item-animate">Username</p>
 						<li><a href="/admin/" class="stack-item ">
-							<img class="img-circle img-thumbnail" src="/static/logo/fab_cube_gray.svg" alt="anmelden"/>
+							<img class="img-circle img-thumbnail" src="{% static 'logo/fab_cube_gray.svg' %}" alt="anmelden"/>
 						</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -101,9 +101,9 @@
 
 		{% include "footer.html" %}
 
-		<script src="/static/fablab_theme/js/jquery-1.11.3.min.js" integrity="sha384-+54fLHoW8AHu3nHtUxs9fW2XKOZ2ZwKHB5olRtKSDTKJIb1Na1EceFZMS8E72mzW" crossorigin="anonymous"></script>
-		<script src="/static/fablab_theme/js/bootstrap-3.3.6.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<script src="/static/fablab_theme/js/faufablab.js" integrity="sha384-1TgYFQYbl9QmRR8pNIEXEYE3LGoQOcD6q/9nHDa1OtDV1b1eJVCl8E0VKURNJgqJ" crossorigin="anonymous"></script>
+		<script src="{% static 'fablab_theme/js/jquery-1.11.3.min.js' %}" integrity="sha384-+54fLHoW8AHu3nHtUxs9fW2XKOZ2ZwKHB5olRtKSDTKJIb1Na1EceFZMS8E72mzW" crossorigin="anonymous"></script>
+		<script src="{% static 'fablab_theme/js/bootstrap-3.3.6.min.js' %}" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src="{% static 'fablab_theme/js/faufablab.js' %}" integrity="sha384-1TgYFQYbl9QmRR8pNIEXEYE3LGoQOcD6q/9nHDa1OtDV1b1eJVCl8E0VKURNJgqJ" crossorigin="anonymous"></script>
 		{% render_block "js" %}
 	</body>
 </html>

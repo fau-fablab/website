@@ -29,7 +29,7 @@ SECRET_KEY = 'y7%=$+n&s-1b%u#8l)#@zy$f3zl^_!l9d8c9#@0yhh6g0*9fb9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'fablab.fau.de']
 
 # Application definition
 
