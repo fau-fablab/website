@@ -11,13 +11,16 @@ python:
 services:
     - docker
 
+before_install:
+    - git submodule foreach git submodule init
+    - git submodule foreach git submodule update
+
 script:
     - sudo ./manage-docker.sh up
     - sleep 2
     - sudo docker ps -a
     - sudo ./manage-docker.sh port
-    - sudo docker ps | grep fablab_website
-    - sudo ./manage-docker.sh logs
-    - diff -s <(sudo ./manage-docker.sh port) <(echo "80/tcp -> 0.0.0.0:80")  # test if container runs
+    - sudo docker logs fablab_website
+    - diff -q <(sudo ./manage-docker.sh port) <(echo "80/tcp -> 0.0.0.0:80") >/dev/null  # test if container runs
 # test website; maybe we want to run unittests here later
 # TODO run some tests...
