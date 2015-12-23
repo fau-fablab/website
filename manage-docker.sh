@@ -89,4 +89,4 @@ else
 	echo "[i] successfully added tab completion for $(basename ${BASH_SOURCE}) - happy tabbing"
 fi
 
-# vim: ts=8 noet
+# vim: st=8 ts=8 noet

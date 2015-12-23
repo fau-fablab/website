@@ -4,15 +4,21 @@
 	<head>
 		<meta charset="utf-8">
 		<title>{% block title %}FAU FabLab{% endblock title %}</title>
+		{% include "favicon.html" %}
+		<meta name="description" content="Das FabLab an der FAU Erlangen">
+		<!-- TODO <meta name="google-site-verification" content=""/> -->
+		<meta name="keywords" content="FabLab, Fabrication, Laboratory, Werkstatt, Hackerspace, Repair Cafe, Lasercutter, 3D-Drucker, 3d printer, Fräse, basteln, hacken, workwork, Weihnachten, Geschenke, reparieren, acryl, löten, Arduino, Raspberry Pi,">
+		<meta name="rating" content="safe for kids">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="{% sass_src 'fablab_theme/scss/faufablab/bootstrap.scss' %}">
 		{% render_block "css" %}
-		{% include "favicon.html" %}
 	</head>
 	<body>
 
 		<div id="top"></div>
 		{% cms_toolbar %}
+		<div class="intro jumbotron">
+		</div>
 
 		<nav class="navbar navbar-inverse navbar-static-top navbar-sticky" role="navigation">
 			<div class="container container-fluid">
@@ -24,8 +30,8 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="/">
-						<img class="img-thumbnail hidden-xs" src="{% static 'logo/fablab_logo.svg' %}" alt="FAU FabLab"/>
-						<img class="img-thumbnail visible-xs" src="{% static 'logo/fab_cube.svg' %}" alt="FAU FabLab"/>
+						<img id="logo_lg" class="img-thumbnail hidden-xs" src="{% static 'logo/fablab_logo.svg' %}" alt="FAU FabLab"/>
+						<img id="logo_xs" class="img-thumbnail visible-xs" src="{% static 'logo/fab_cube.svg' %}" alt="FAU FabLab"/>
 					</a>
 				</div><!-- /.navbar-header -->
 				<div class="navbar-collapse collapse">

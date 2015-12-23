@@ -58,14 +58,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
-STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'fablab_website', 'static'),
 )
-SITE_ID = 1
+SITE_ID = 1  # for multi site projects...
 
 
 TEMPLATES = [
@@ -185,7 +185,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'HOST': 'localhost',
-        'NAME': 'project.db',
+        'NAME': os.path.join(BASE_DIR, 'project.db'),
         'PASSWORD': '',
         'PORT': '',
         'USER': ''

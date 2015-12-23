@@ -6,9 +6,9 @@ Documentation
 
 This repo is modular and uses submodules:
 
- - [fau-fablab/website-style](https://github.com/fau-fablab/website-style) as bootstrap theme
+ - [fau-fablab/website-style](https://github.com/fau-fablab/website-style) (adapted bootstrap)
 
-So clone recursive or run `git submodules init && git submodules update`
+So **clone recursive** or run `git submodules init && git submodules update`
 
 1. Scripts and Testing
 ----------------------

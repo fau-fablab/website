@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTIONS=("activate_venv" "install_system_requirements" "check_system_requirements" "create_venv" "install_requirements" "post_setup" "all")
+FUNCTIONS=("activate_venv" "install_system_requirements" "check_system_requirements" "create_venv" "install_requirements" "run_checks" "post_setup" "all")
 
 if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 	if [ ! -z $1 ] && [[ ! "${FUNCTIONS[@]}" =~ "$1" ]]; then
@@ -11,6 +11,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		echo "	install_system_requirements	installs system requirements using you deistributions package manager"
 		echo "	create_venv			create a virtual environment"
 		echo "	install_requirements		install all python requirements with pip"
+		echo "	run_checks			run installation checks"
 		echo "	post_setup			run post setup tasks"
 		echo "	all				run all tasks (default)"
 		echo ""
@@ -133,21 +134,28 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 		}
 
+		function run_checks() {
+			activate_venv
+			echo "[i] Running checks"
+			echo "[i]   Checking for pip updates..."
+			[ `piprot -o "${SITE}/requirements.txt" >&2` ] || true
+			echo "[i]   Checking django installation..."
+			python3 "./${SITE}/manage.py" "check"
+			echo "[i]   Checking django cms installation..."
+			python3 "./${SITE}/manage.py" "cms" "check"
+		}
+
 		function post_setup() {
 		# tasks to do after setup
 
 			activate_venv
 			echo "[i] Running post setup tasks"
-			cd "${SITE}"
 			echo "[i]   Compiling scss..."
-			python3 "./manage.py" "compilescss"
+			python3 "./${SITE}/manage.py" "compilescss"
 			echo "[i]   Migrating database..."
-			python3 "./manage.py" "makemigrations"
-			python3 "./manage.py" "migrate"
-			echo "[i]   Checking for updates..."
-			[ `piprot -o >&2` ] || true
-			cd - >/dev/null
-
+			python3 "./${SITE}/manage.py" "makemigrations"
+			python3 "./${SITE}/manage.py" "migrate"
+			run_checks
 		}
 
 
