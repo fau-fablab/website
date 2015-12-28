@@ -28,13 +28,9 @@ Django-Select2==4.3.2
 django-treebeard==3.0
 
 ## django plugins
-# this one is currently broken: django-sass-processor>=0.3.0
-# but the pr to fix it is already accepted: https://github.com/jrief/django-sass-processor/pull/21
-# here is a fixed version:
-https://github.com/sedrubal/django-sass-processor/archive/0.3.0-python3-hotfix.tar.gz
+django-sass-processor==0.3.3  # >=0.3.3
 
 ## and their dependencies
-# django-sass-processor
 django-compressor==1.6  # >=1.6
 libsass==0.10.0  # >=0.9.3
 
