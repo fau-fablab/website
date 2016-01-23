@@ -47,3 +47,28 @@ So **clone recursive** or run `git submodules init && git submodules update`
 
  - then I ran `djangocms --config-file docs/djangocmsinstaller.conf -p djangocms fablab_website` and choosing the default values from [`./docs/djangocmsinstaller.conf`](./docs/djangocmsinstaller.conf)
  - one can now `rm -rf venv && ./setup.sh` to finish the provisioning or `./manage-docker.sh up`
+
+3. Updating and upgrading
+-------------------------
+
+ - Old packages are reported by piprot after setting up via [`setup.py`](./setup.py):
+
+		Django (1.8.7) is 38 days out of date. Latest is 1.9.1
+
+   - some packages mustn't be updated, see below
+   - also subscribe to django mailing list or RSS feed to get security announcements
+ - For updating a package, edit [`requirements.txt`](./djangocms/requirements.txt)
+   - update the specified number to the new version number
+   - use the `==` operator, otherwise it can happen, that a new released version breaks the website and you can't understand, why (see https://github.com/divio/django-cms/issues/4843#issuecomment-164232239)
+   - sometimes there is a comment like `# <1.9` if there is a module, which requires this module to be older than `1.9`
+   - read their CHANGELOG before
+ - after changing a version, test if everything is still ok:
+
+```sh
+deavtivate
+./setup.sh
+. venv/bin/activate
+./djangocms/manage.py runserver
+# test test
+# commit
+```

@@ -23,6 +23,11 @@ see [DOC.md](DOC.md)
 
 Please contribute to build up a nice website ;)
 
+Roadmap
+-------
+
+https://pad.stuve.fau.de/p/fablab-website-2.0-tm
+
 License
 -------
 
