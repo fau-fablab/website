@@ -1,6 +1,6 @@
 Django==1.8.9  # >1.6.9,<1.9 blocker: djangocms
 django-cms==3.2.3  # <3.3
-djangocms-blog==0.6.2  #>=0.6.2
+djangocms-blog==0.6.3  #>=0.6.2
 
 ## djangocms plugins
 djangocms-column==1.6.0

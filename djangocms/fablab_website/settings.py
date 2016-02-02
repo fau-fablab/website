@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     'sekizai',
     'treebeard',
     'sass_processor',
-    # djangocms-blog
+    # djangocms blog
     'filer',
     'easy_thumbnails',
     'cmsplugin_filer_image',
@@ -135,7 +135,6 @@ INSTALLED_APPS = (
     'taggit_autosuggest',
     'meta',
     'meta_mixin',
-#   'admin_enhancer',
     'djangocms_blog',
     # djangocms plugins
     'djangocms_text_ckeditor',
@@ -189,6 +188,7 @@ PARLER_LANGUAGES = {
         {'code': 'en', },
     ),
 }
+PARLER_DEFAULT_LANGUAGE_CODE = 'de'
 
 CMS_TEMPLATES = (
     # Customize this
@@ -224,3 +224,6 @@ THUMBNAIL_PROCESSORS = (
 )
 META_SITE_PROTOCOL = 'http'
 META_USE_SITES = True
+META_USE_TITLE_TAG = True  # TODO makes <title> (TODO: add more meta tags here?
+
+from .settings_blog import *
