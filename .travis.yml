@@ -17,7 +17,7 @@ before_install:
 
 script:
     - sudo ./manage-docker.sh up
-    - sleep 2
+    - sleep 10  # wait until post_setup is done
     - sudo docker ps -a
     - sudo ./manage-docker.sh port
     - sudo docker logs fablab_website
