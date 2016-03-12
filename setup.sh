@@ -24,7 +24,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 		cd "$(dirname ${0})"
 
-		VENV_DIR="./venv/"
+		VENV_DIR="./.venv/"
 		SITE="./djangocms/"
 		DOCKERFILE="./Dockerfile"
 
@@ -116,7 +116,10 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		function create_venv() {
 		# creates a virtual env and sources it
 
-			if [ -z $NO_VENV ]; then
+			if [ ! -z $VIRTUAL_ENV ]; then
+				echo "[!] Won't create a new virtualenv in \"${VENV_DIR}\" as we are in the virtualenv \"$VIRTUAL_ENV\""
+				echo "[!]   Run 'deactivate' to leave the current virtualenv"
+			elif [ -z $NO_VENV ]; then
 				echo "[i] Creating a virtual env in \"${VENV_DIR}\" ..."
 				python3 -m "virtualenv" -p python3.4 "${VENV_DIR}"
 
@@ -137,12 +140,12 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 		function run_checks() {
 			activate_venv
 			echo "[i] Running checks"
-			echo "[i]   Checking for pip updates..."
-			[ `piprot -o "${SITE}/requirements.txt" >&2` ] || true
 			echo "[i]   Checking django installation..."
 			python3 "./${SITE}/manage.py" "check"
 			echo "[i]   Checking django cms installation..."
 			python3 "./${SITE}/manage.py" "cms" "check"
+			echo "[i]   Checking for pip updates..."
+			[ `piprot -o "${SITE}/requirements.txt" >&2` ] || true
 		}
 
 		function post_setup() {
@@ -153,7 +156,8 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			echo "[i]   Compiling scss..."
 			python3 "./${SITE}/manage.py" "compilescss"
 			echo "[i]   Migrating database..."
-			python3 "./${SITE}/manage.py" "makemigrations"
+			python3 "./${SITE}/manage.py" "migrate"  # First migrate packaged migrations
+			python3 "./${SITE}/manage.py" "makemigrations"  # If there are still new migrations, make and apply them
 			python3 "./${SITE}/manage.py" "migrate"
 			run_checks
 		}
