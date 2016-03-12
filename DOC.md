@@ -78,3 +78,6 @@ deavtivate
 
  - we use [djangocms-blog](https://github.com/nephila/djangocms-blog) as blogging app
  - it is integrated in djangocms
+ - configurations in web config:
+   - Blogconfig: Layout > TEMPLATE_PREFIX: 'blog/'
+   - Move Blog to top in sites to be the landing page (Or do we want a more fancy landing page?)

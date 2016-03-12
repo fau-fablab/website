@@ -2,6 +2,8 @@
 Settings for djangocms-blog
 """
 
+# Hide articles in menu
+BLOG_MENU_TYPE = None
 #  Size of the main image when shown on the post lists
 BLOG_IMAGE_THUMBNAIL_SIZE = {
     'size': '500x300',
