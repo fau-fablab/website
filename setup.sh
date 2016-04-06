@@ -24,7 +24,7 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 
 		cd "$(dirname ${0})"
 
-		VENV_DIR="./.venv/"
+		VENV_DIR="./.env/"
 		SITE="./djangocms/"
 		DOCKERFILE="./Dockerfile"
 
@@ -159,6 +159,11 @@ if [ "$(basename ${0})" == "$(basename ${BASH_SOURCE})" ] ; then
 			python3 "./${SITE}/manage.py" "migrate"  # First migrate packaged migrations
 			python3 "./${SITE}/manage.py" "makemigrations"  # If there are still new migrations, make and apply them
 			python3 "./${SITE}/manage.py" "migrate"
+			# echo "[i]   Compiling messages (translations)..."
+			# python3 "./${SITE}/manage.py" "compilemessages"
+			echo "[i]   Collecting static files..."
+			python3 "./${SITE}/manage.py" "collectstatic" "--noinput"
+			# TODO compress
 			run_checks
 		}
 
