@@ -3,10 +3,8 @@
 
 *env
 
-project.db
+*.db
 
 djangocms/media/*
 
-# django-sass-processor will compile css into this folder
-# TODO configure another folder?
-djangocms/static
+djangocms/static/*
