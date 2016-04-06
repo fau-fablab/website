@@ -126,6 +126,17 @@ INSTALLED_APPS = (
     'sekizai',
     'treebeard',
     'sass_processor',
+    # djangocms blog
+    'filer',
+    'easy_thumbnails',
+    'cmsplugin_filer_image',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'meta_mixin',
+    'djangocms_blog',
+    # djangocms plugins
     'djangocms_text_ckeditor',
     'djangocms_style',
     'djangocms_column',
@@ -171,6 +182,14 @@ CMS_LANGUAGES = {
     },
 }
 
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'de', },
+        {'code': 'en', },
+    ),
+}
+PARLER_DEFAULT_LANGUAGE_CODE = 'de'
+
 CMS_TEMPLATES = (
     # Customize this
     ('page.html', 'Page'),
@@ -191,3 +210,20 @@ DATABASES = {
         'USER': ''
     }
 }
+
+# djangocms_blog:
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+    'taggit': 'taggit.south_migrations',
+}
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+META_SITE_PROTOCOL = 'http'
+META_USE_SITES = True
+META_USE_TITLE_TAG = True  # TODO makes <title> (TODO: add more meta tags here?
+
+from .settings_blog import *
